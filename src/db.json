@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Филадельфия Роял",
+    "imgUrl": "assets/item.jpg",
+    "prise": 17.9
+  },
+  {
+    "id": 2,
+    "name": "Филадельфия Роял 1",
+    "imgUrl": "assets/item.jpg",
+    "prise": 17.9
+  },
+  {
+    "id": 3,
+    "name": "Филадельфия Роял 3",
+    "imgUrl": "assets/item.jpg",
+    "prise": 17.9
+  },
+  {
+    "id": 4,
+    "name": "Филадельфия Роял 4",
+    "imgUrl": "assets/item.jpg",
+    "prise": 17.9
+  }
+]

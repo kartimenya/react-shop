@@ -1,15 +1,15 @@
-body {
-  color: black;
+* {
   margin: 0;
   padding: 0;
+}
+body {
+  color: black;
   background-color: #f9f9f9;
 }
 
 ul,
 li {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 a {
@@ -120,4 +120,59 @@ a {
 
 .sort__popup li:hover {
   color: #84bd93;
+}
+
+.contant-items {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  background: #fff;
+  box-shadow: 0 0 15px rgb(81 92 98 / 10%);
+  -webkit-box-shadow: 0 0 15px rgb(81 92 98 / 10%);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card__content {
+  padding: 0 20px;
+}
+
+.card__name {
+  color: #292f32;
+  margin-top: 15px;
+}
+
+.card__desc {
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: condensed;
+  line-height: 1.2;
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+.card__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__btn {
+  background: #fff;
+  border-radius: 12px;
+  display: block;
+  height: 36px;
+  width: 100%;
+  cursor: pointer;
+  border: solid 1px #bfc5c7;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.card__btn:hover {
+  border-color: #ff4157;
+  background: #ff4157;
+  color: white;
 }
