@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <a className="logo" href="">
+        <Link className="logo" to="/">
           <img src="assets/logo.svg" alt="" />
-        </a>
+        </Link>
         <div className="header__cart">
-          <a className="cart" href="/cart">
+          <Link className="cart" to="/cart">
             <span>0 ₽</span>
             <div className="cart__delimiter"></div>
             <svg
@@ -37,7 +38,7 @@ const Header = () => {
                 strokeLinejoin="round"></path>
             </svg>
             <span>0</span>
-          </a>
+          </Link>
         </div>
       </div>
     </header>
