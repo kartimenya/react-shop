@@ -2,25 +2,33 @@
   {
     "id": 1,
     "name": "Филадельфия Роял",
-    "imgUrl": "assets/item.jpg",
-    "prise": 17.9
+    "imgUrl": "assets/item-1.jpg",
+    "ingredients": "Филе лосося, сливочный сыр",
+    "prise": 17.9,
+    "category": 1
   },
   {
     "id": 2,
-    "name": "Филадельфия Роял 1",
-    "imgUrl": "assets/item.jpg",
-    "prise": 17.9
+    "name": "Филадельфия Classic",
+    "imgUrl": "assets/item-2.jpg",
+    "ingredients": "Филе лосося, сливочный сыр",
+    "prise": 15.6,
+    "category": 1
   },
   {
     "id": 3,
-    "name": "Филадельфия Роял 3",
-    "imgUrl": "assets/item.jpg",
-    "prise": 17.9
+    "name": "Ниндзя",
+    "imgUrl": "assets/item-3.jpg",
+    "ingredients": "Апельсин, угорь, тигровые креветки, сливочный сыр",
+    "prise": 17.0,
+    "category": 1
   },
   {
     "id": 4,
-    "name": "Филадельфия Роял 4",
-    "imgUrl": "assets/item.jpg",
-    "prise": 17.9
+    "name": "Бонито Original",
+    "imgUrl": "assets/item-4.jpg",
+    "ingredients": "Лосось терияки, стружка тунца, сливочный сыр, огурец",
+    "prise": 11.9,
+    "category": 1
   }
 ]

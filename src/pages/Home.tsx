@@ -8,9 +8,21 @@ import { IRoll } from '../types/IRoll';
 const Home = () => {
   const [items, setItems] = useState<IRoll[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [categiryId, setCategiryId] = useState<number>(0);
+  const [sortyId, setsortyId] = useState<any>({
+    name: 'популярности (DESC)',
+    sortProperty: 'prise',
+  });
+
+  const order = sortyId.sortProperty.includes('-') ? 'asd' : 'desc';
+  const sortBy = sortyId.sortProperty.replace('-', '');
+  const category = categiryId > 0 ? `category=${categiryId}` : '';
 
   useEffect(() => {
-    fetch('https://62b21363c7e53744afc73214.mockapi.io/items')
+    setIsLoading(true);
+    fetch(
+      `https://62b21363c7e53744afc73214.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`,
+    )
       .then((res) => {
         return res.json();
       })
@@ -18,14 +30,14 @@ const Home = () => {
         setItems(json);
         setIsLoading(false);
       });
-  }, []);
+  }, [categiryId, sortyId]);
 
   return (
     <>
       <div className="contant__top">
-        <Categories />
+        <Categories categiryId={categiryId} onChangeCategory={(id: number) => setCategiryId(id)} />
 
-        <Sort />
+        <Sort sortyId={sortyId} onChangeSort={(id: any) => setsortyId(id)} />
       </div>
 
       <div className="contant-items">
