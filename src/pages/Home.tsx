@@ -10,6 +10,7 @@ import { IRoll } from '../types/IRoll';
 const Home = () => {
   const dispatch = useDispatch();
   const categoryId = useSelector((state: any) => state.filter.categoryId);
+  const sortyType = useSelector((state: any) => state.filter.sort.sortProperty);
 
   const onChangeCategory = (id: number) => {
     dispatch(setCategoryId(id));
@@ -17,13 +18,9 @@ const Home = () => {
 
   const [items, setItems] = useState<IRoll[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [sortyType, setsortyId] = useState<any>({
-    name: 'популярности (DESC)',
-    sortProperty: 'prise',
-  });
 
-  const order = sortyType.sortProperty.includes('-') ? 'asd' : 'desc';
-  const sortBy = sortyType.sortProperty.replace('-', '');
+  const order = sortyType.includes('-') ? 'asd' : 'desc';
+  const sortBy = sortyType.replace('-', '');
   const category = categoryId > 0 ? `category=${categoryId}` : '';
 
   useEffect(() => {
@@ -45,7 +42,7 @@ const Home = () => {
       <div className="contant__top">
         <Categories value={categoryId} onChangeCategory={onChangeCategory} />
 
-        <Sort value={sortyType} onChangeSort={(id: any) => setsortyId(id)} />
+        <Sort />
       </div>
 
       <div className="contant-items">

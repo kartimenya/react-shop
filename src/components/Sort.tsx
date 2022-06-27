@@ -1,41 +1,41 @@
 import { FC, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSort } from '../store/filtersSlise';
 
-interface ISort {
-  value: any;
-  onChangeSort: (i: any) => void;
-}
+const list = [
+  {
+    name: 'популярности (DESC)',
+    sortProperty: 'rating',
+  },
+  {
+    name: 'популярности (ASC)',
+    sortProperty: '-rating',
+  },
+  {
+    name: 'цене (DESC)',
+    sortProperty: 'prise',
+  },
+  {
+    name: 'цене (ASC)',
+    sortProperty: '-prise',
+  },
+  {
+    name: 'алфавиту (DESC)',
+    sortProperty: 'name',
+  },
+  {
+    name: 'алфавиту (ASC)',
+    sortProperty: '-name',
+  },
+];
 
-const Sort: FC<ISort> = ({ value, onChangeSort }) => {
+const Sort: FC = () => {
+  const dispatch = useDispatch();
+  const sort = useSelector((state: any) => state.filter.sort);
   const [open, setOpen] = useState(false);
-  const list = [
-    {
-      name: 'популярности (DESC)',
-      sortProperty: 'rating',
-    },
-    {
-      name: 'популярности (ASC)',
-      sortProperty: '-rating',
-    },
-    {
-      name: 'цене (DESC)',
-      sortProperty: 'prise',
-    },
-    {
-      name: 'цене (ASC)',
-      sortProperty: '-prise',
-    },
-    {
-      name: 'алфавиту (DESC)',
-      sortProperty: 'name',
-    },
-    {
-      name: 'алфавиту (ASC)',
-      sortProperty: '-name',
-    },
-  ];
 
-  const onClickListItem = (i: any) => {
-    onChangeSort(i);
+  const onClickListItem = (obj: any) => {
+    dispatch(setSort(obj));
     setOpen(false);
   };
 
@@ -53,7 +53,7 @@ const Sort: FC<ISort> = ({ value, onChangeSort }) => {
             fill="#2C2C2C"></path>
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{value.name}</span>
+        <span onClick={() => setOpen(!open)}>{sort.name}</span>
       </div>
       {open && (
         <div className="sort__popup">
@@ -61,7 +61,7 @@ const Sort: FC<ISort> = ({ value, onChangeSort }) => {
             {list.map((item, i) => (
               <li
                 key={i}
-                className={item.sortProperty === value.sortProperty ? 'active' : ''}
+                className={item.sortProperty === sort.sortProperty ? 'active' : ''}
                 onClick={() => onClickListItem(item)}>
                 {item.name}
               </li>
