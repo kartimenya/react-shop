@@ -2,20 +2,17 @@ import React, { FC, useState } from 'react';
 
 interface ICategories {
   onChangeCategory: (id: number) => void;
-  categiryId: number;
+  value: number;
 }
 
-const Categories: FC<ICategories> = ({ onChangeCategory, categiryId }) => {
+const Categories: FC<ICategories> = ({ onChangeCategory, value }) => {
   const arr = ['Все', 'Хосо Маки', 'Маки', 'Урамаки', 'Опаленные', 'Теплые Роллы'];
 
   return (
     <div className="categories">
       <ul>
         {arr.map((item, id) => (
-          <li
-            onClick={() => onChangeCategory(id)}
-            className={categiryId == id ? 'active' : ''}
-            key={id}>
+          <li onClick={() => onChangeCategory(id)} className={value == id ? 'active' : ''} key={id}>
             {item}
           </li>
         ))}

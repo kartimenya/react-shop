@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 
 interface ISort {
-  sortyId: any;
+  value: any;
   onChangeSort: (i: any) => void;
 }
 
-const Sort: FC<ISort> = ({ sortyId, onChangeSort }) => {
+const Sort: FC<ISort> = ({ value, onChangeSort }) => {
   const [open, setOpen] = useState(false);
   const list = [
     {
@@ -53,7 +53,7 @@ const Sort: FC<ISort> = ({ sortyId, onChangeSort }) => {
             fill="#2C2C2C"></path>
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{sortyId.name}</span>
+        <span onClick={() => setOpen(!open)}>{value.name}</span>
       </div>
       {open && (
         <div className="sort__popup">
@@ -61,7 +61,7 @@ const Sort: FC<ISort> = ({ sortyId, onChangeSort }) => {
             {list.map((item, i) => (
               <li
                 key={i}
-                className={item.sortProperty === sortyId.sortProperty ? 'active' : ''}
+                className={item.sortProperty === value.sortProperty ? 'active' : ''}
                 onClick={() => onClickListItem(item)}>
                 {item.name}
               </li>

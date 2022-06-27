@@ -1,22 +1,30 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Categories from '../components/Categories';
 import RollItem from '../components/RollItem';
 import Skeleton from '../components/RollItem/Skeleton';
 import Sort from '../components/Sort';
+import { setCategoryId } from '../store/filtersSlise';
 import { IRoll } from '../types/IRoll';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const categoryId = useSelector((state: any) => state.filter.categoryId);
+
+  const onChangeCategory = (id: number) => {
+    dispatch(setCategoryId(id));
+  };
+
   const [items, setItems] = useState<IRoll[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [categiryId, setCategiryId] = useState<number>(0);
-  const [sortyId, setsortyId] = useState<any>({
+  const [sortyType, setsortyId] = useState<any>({
     name: 'популярности (DESC)',
     sortProperty: 'prise',
   });
 
-  const order = sortyId.sortProperty.includes('-') ? 'asd' : 'desc';
-  const sortBy = sortyId.sortProperty.replace('-', '');
-  const category = categiryId > 0 ? `category=${categiryId}` : '';
+  const order = sortyType.sortProperty.includes('-') ? 'asd' : 'desc';
+  const sortBy = sortyType.sortProperty.replace('-', '');
+  const category = categoryId > 0 ? `category=${categoryId}` : '';
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,14 +38,14 @@ const Home = () => {
         setItems(json);
         setIsLoading(false);
       });
-  }, [categiryId, sortyId]);
+  }, [categoryId, sortyType]);
 
   return (
     <>
       <div className="contant__top">
-        <Categories categiryId={categiryId} onChangeCategory={(id: number) => setCategiryId(id)} />
+        <Categories value={categoryId} onChangeCategory={onChangeCategory} />
 
-        <Sort sortyId={sortyId} onChangeSort={(id: any) => setsortyId(id)} />
+        <Sort value={sortyType} onChangeSort={(id: any) => setsortyId(id)} />
       </div>
 
       <div className="contant-items">
