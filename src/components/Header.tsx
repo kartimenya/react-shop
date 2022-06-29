@@ -1,6 +1,8 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const { items, totalPrise } = useSelector((state: any) => state.cartSlise);
   return (
     <header className="header">
       <div className="container">
@@ -9,7 +11,7 @@ const Header = () => {
         </Link>
         <div className="header__cart">
           <Link className="cart" to="/cart">
-            <span>0 ₽</span>
+            <span>{totalPrise} ₽</span>
             <div className="cart__delimiter"></div>
             <svg
               width="18"
@@ -36,7 +38,7 @@ const Header = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"></path>
             </svg>
-            <span>0</span>
+            <span>{items.length}</span>
           </Link>
         </div>
       </div>

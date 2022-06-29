@@ -1,7 +1,18 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../store/cartSlise';
 import { IRoll } from '../../types/IRoll';
 
 const RollItem: FC<IRoll> = ({ name, prise, imgUrl }) => {
+  const dispatch = useDispatch();
+
+  const onClickAdd = () => {
+    const item = {
+      name,
+      prise,
+    };
+    dispatch(addProduct(item));
+  };
   return (
     <div className="card">
       <div className="card__img">
@@ -15,7 +26,9 @@ const RollItem: FC<IRoll> = ({ name, prise, imgUrl }) => {
           <p>{prise}руб.</p>
           <p>285 гр.</p>
         </div>
-        <button className="card__btn">В корзину</button>
+        <button onClick={onClickAdd} className="card__btn">
+          В корзину
+        </button>
       </div>
     </div>
   );

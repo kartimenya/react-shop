@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSort } from '../store/filtersSlise';
 
@@ -32,15 +32,31 @@ const list = [
 const Sort: FC = () => {
   const dispatch = useDispatch();
   const sort = useSelector((state: any) => state.filter.sort);
-  const [open, setOpen] = useState(false);
+  const sortRef = useRef<HTMLDivElement>(null);
+
+  const [open, setOpen] = useState<boolean>(false);
 
   const onClickListItem = (obj: any) => {
     dispatch(setSort(obj));
     setOpen(false);
   };
 
+  useEffect(() => {
+    const handlerClickOutside = (event: any) => {
+      if (!event.path.includes(sortRef.current)) {
+        setOpen(false);
+      }
+    };
+
+    document.body.addEventListener('click', handlerClickOutside);
+
+    return () => {
+      document.body.removeEventListener('clicl', handlerClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"
