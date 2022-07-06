@@ -4,7 +4,7 @@
     "name": "Филадельфия Роял",
     "imgUrl": "assets/item-1.jpg",
     "ingredients": "Филе лосося, сливочный сыр",
-    "prise": 17.9,
+    "price": 17.9,
     "category": 3
   },
   {
@@ -12,7 +12,7 @@
     "name": "Филадельфия Classic",
     "imgUrl": "assets/item-2.jpg",
     "ingredients": "Филе лосося, сливочный сыр",
-    "prise": 15.6,
+    "price": 15.6,
     "category": 3
   },
   {
@@ -20,7 +20,7 @@
     "name": "Ниндзя",
     "imgUrl": "assets/item-3.jpg",
     "ingredients": "Апельсин, угорь, тигровые креветки, сливочный сыр",
-    "prise": 17.0,
+    "price": 17.0,
     "category": 3
   },
   {
@@ -28,7 +28,7 @@
     "name": "Бонито Original",
     "imgUrl": "assets/item-4.jpg",
     "ingredients": "Лосось терияки, стружка тунца, сливочный сыр, огурец",
-    "prise": 11.9,
+    "price": 11.9,
     "category": 3
   },
   {
@@ -36,7 +36,7 @@
     "name": "Авокадо Маки",
     "imgUrl": "assets/item-5.jpg",
     "ingredients": "Авокадо",
-    "prise": 6.6,
+    "price": 6.6,
     "category": 1
   },
   {
@@ -44,7 +44,7 @@
     "name": "Каппа Маки",
     "imgUrl": "assets/item-6.jpg",
     "ingredients": "Огурец",
-    "prise": 4.8,
+    "price": 4.8,
     "category": 1
   },
   {
@@ -52,7 +52,7 @@
     "name": "Эби Маки",
     "imgUrl": "assets/item-7.jpg",
     "ingredients": "Креветка",
-    "prise": 9.4,
+    "price": 9.4,
     "category": 1
   },
   {
@@ -60,7 +60,7 @@
     "name": "Сяке Маки",
     "imgUrl": "assets/item-8.jpg",
     "ingredients": "Лосось",
-    "prise": 9.0,
+    "price": 9.0,
     "category": 1
   }
 ]

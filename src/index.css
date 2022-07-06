@@ -178,3 +178,42 @@ a {
   background: #ff4157;
   color: white;
 }
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cart-item__img {
+  width: 90px;
+  height: auto;
+}
+
+.cart-item__name {
+  color: #292f32;
+  margin-bottom: 5px;
+}
+
+.cart-item__desc {
+  font-size: 12px;
+  font-weight: 300;
+  font-stretch: condensed;
+  line-height: 1.2;
+  color: #666666;
+}
+.cart-item__count {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cart-item__count button {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: solid 1px #b3bbbd;
+  border-radius: 50%;
+  color: #000;
+  cursor: pointer;
+}

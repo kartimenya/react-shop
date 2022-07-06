@@ -1,6 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface Sort {
+  name: string;
+  sortProperty: string;
+}
+
+interface filterState {
+  categoryId: number;
+  sort: Sort;
+}
+
+const initialState: filterState = {
   categoryId: 0,
   sort: {
     name: 'популярности (DESC)',

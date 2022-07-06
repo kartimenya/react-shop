@@ -42,17 +42,15 @@ const Sort: FC = () => {
   };
 
   useEffect(() => {
-    const handlerClickOutside = (event: any) => {
-      if (!event.path.includes(sortRef.current)) {
+    const handleClickOutside = (event: any) => {
+      if (sortRef.current && !event.path.includes(sortRef.current)) {
         setOpen(false);
       }
     };
 
-    document.body.addEventListener('click', handlerClickOutside);
+    document.body.addEventListener('click', handleClickOutside);
 
-    return () => {
-      document.body.removeEventListener('clicl', handlerClickOutside);
-    };
+    return () => document.body.removeEventListener('click', handleClickOutside);
   }, []);
 
   return (

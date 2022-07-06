@@ -1,6 +1,6 @@
 export interface IRoll {
   id: number;
   name: string;
-  prise: number;
+  price: number;
   imgUrl: string;
 }

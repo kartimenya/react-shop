@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import filter from './filtersSlise';
-import cartSlise from './cartSlise';
+import cart from './cartSlise';
 
 export const store = configureStore({
   reducer: {
     filter,
-    cartSlise,
+    cart,
   },
 });
+
+export type RotState = ReturnType<typeof store.getState>;
