@@ -1,23 +1,47 @@
 import { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { addProduct, minusProduct, removeProduct } from '../store/cartSlise';
 
 interface ICartItem {
   name: string;
   price: number;
+  count: number;
+  id: number;
 }
-const CartItem: FC<ICartItem> = ({ name, price }) => {
+const CartItem: FC<ICartItem> = ({ name, price, count, id }) => {
+  const dispatch = useDispatch();
+
+  const onClickRemove = () => {
+    if (window.confirm(`Удалить ${name}?`)) {
+      dispatch(removeProduct(id));
+    }
+  };
+
+  const onClickPlus = () => {
+    dispatch(
+      addProduct({
+        id,
+      }),
+    );
+  };
+
+  const onClickMinus = () => {
+    dispatch(minusProduct(id));
+  };
+
   return (
     <div className="cart-item">
-      <img className="cart-item__img" src="assets/item-1.jpg" alt="" />
+      <img onClick={onClickRemove} className="cart-item__img" src="assets/item-1.jpg" alt="" />
       <div className="cart-item__box">
         <div className="cart-item__name">{name}</div>
         <p className="cart-item__desc">{price}</p>
       </div>
       <div className="cart-item__count">
-        <button>+</button>
-        <span>1</span>
-        <button>-</button>
+        <button onClick={onClickPlus}>+</button>
+        <span>{count}</span>
+        <button onClick={onClickMinus}>-</button>
       </div>
-      <div className="cart-item__price">{price}</div>
+      <div className="cart-item__price">{(price * count).toFixed(1)}</div>
     </div>
   );
 };

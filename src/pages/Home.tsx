@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Categories from '../components/Categories';
@@ -19,20 +20,19 @@ const Home = () => {
   const [items, setItems] = useState<IRoll[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const order = sortyType.includes('-') ? 'asd' : 'desc';
-  const sortBy = sortyType.replace('-', '');
-  const category = categoryId > 0 ? `category=${categoryId}` : '';
-
   useEffect(() => {
+    const order = sortyType.includes('-') ? 'asd' : 'desc';
+    const sortBy = sortyType.replace('-', '');
+    const category = categoryId > 0 ? `category=${categoryId}` : '';
+
     setIsLoading(true);
-    fetch(
-      `https://62b21363c7e53744afc73214.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`,
-    )
+
+    axios
+      .get(
+        `https://62b21363c7e53744afc73214.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`,
+      )
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setItems(json);
+        setItems(res.data);
         setIsLoading(false);
       });
   }, [categoryId, sortyType]);

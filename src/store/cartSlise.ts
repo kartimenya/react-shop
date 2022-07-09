@@ -37,10 +37,20 @@ const cartSlise = createSlice({
         return obj.price * obj.count + sum;
       }, 0);
     },
+    minusProduct(state, action) {
+      const findItem = state.items.find((obj) => obj.id === action.payload);
+
+      if (findItem) {
+        findItem.count--;
+      }
+    },
+    removeProduct(state, action) {
+      state.items = state.items.filter((item) => item.id != action.payload);
+    },
   },
 });
 
 export const selectCurt = (state: RotState) => state.cart;
 
-export const { addProduct } = cartSlise.actions;
+export const { addProduct, minusProduct, removeProduct } = cartSlise.actions;
 export default cartSlise.reducer;

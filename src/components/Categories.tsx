@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC } from 'react';
 
 interface ICategories {
   onChangeCategory: (id: number) => void;

@@ -5,6 +5,8 @@ import { selectCurt } from '../store/cartSlise';
 const Header = () => {
   const { items, totalPrise } = useSelector(selectCurt);
 
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
   return (
     <header className="header">
       <div className="container">
@@ -13,7 +15,7 @@ const Header = () => {
         </Link>
         <div className="header__cart">
           <Link className="cart" to="/cart">
-            <span>{totalPrise} ₽</span>
+            <span>{totalPrise.toFixed(1)} ₽</span>
             <div className="cart__delimiter"></div>
             <svg
               width="18"
@@ -40,7 +42,7 @@ const Header = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"></path>
             </svg>
-            <span>{items.length}</span>
+            <span>{totalCount}</span>
           </Link>
         </div>
       </div>
