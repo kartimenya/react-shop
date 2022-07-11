@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectCurt } from '../store/cartSlise';
+import { selectCurt } from '../store/slises/cartSlise';
 
 const Header = () => {
   const { items, totalPrise } = useSelector(selectCurt);

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { addProduct, minusProduct, removeProduct } from '../store/cartSlise';
+import { addProduct, minusProduct, removeProduct } from '../store/slises/cartSlise';
 
 interface ICartItem {
   name: string;

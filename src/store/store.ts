@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import filter from './filtersSlise';
-import cart from './cartSlise';
-import rolls from './rollsSlise';
+import filter from './slises/filtersSlise';
+import cart from './slises/cartSlise';
+import rolls from './slises/rollsSlise';
 import { useDispatch } from 'react-redux';
 
 export const store = configureStore({

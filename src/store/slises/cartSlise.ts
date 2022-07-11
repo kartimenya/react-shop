@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RotState } from './store';
+import { RotState } from '../store';
 
 interface CartItem {
   id: number;
@@ -40,7 +40,7 @@ const cartSlise = createSlice({
     minusProduct(state, action) {
       const findItem = state.items.find((obj) => obj.id === action.payload);
 
-      if (findItem) {
+      if (findItem && findItem.count > 1) {
         findItem.count--;
       }
     },

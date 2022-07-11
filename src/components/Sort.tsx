@@ -1,6 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSort } from '../store/filtersSlise';
 
 const list = [
   {
@@ -88,3 +87,6 @@ const Sort: FC = () => {
 };
 
 export default Sort;
+function setSort(obj: any): any {
+  throw new Error('Function not implemented.');
+}

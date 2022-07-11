@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProduct } from '../../store/cartSlise';
+import { addProduct } from '../../store/slises/cartSlise';
 import { IRoll } from '../../types/IRoll';
 
 const RollItem: FC<IRoll> = ({ name, price, imgUrl, id }) => {
