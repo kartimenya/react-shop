@@ -1,11 +1,9 @@
-import { useSelector } from 'react-redux';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { selectCurt } from '../store/slises/cartSlise';
+import { useAppSelector } from '../hooks/reduxHooks';
 
-const Header = () => {
-  const { items, totalPrise } = useSelector(selectCurt);
-
-  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+const Header: FC = () => {
+  const { totalPrise, totalCount } = useAppSelector((state) => state.cart);
 
   return (
     <header className="header">
@@ -15,7 +13,7 @@ const Header = () => {
         </Link>
         <div className="header__cart">
           <Link className="cart" to="/cart">
-            <span>{totalPrise.toFixed(1)} ₽</span>
+            <span>{totalPrise.toFixed(1)} руб.</span>
             <div className="cart__delimiter"></div>
             <svg
               width="18"

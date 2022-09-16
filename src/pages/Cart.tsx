@@ -1,15 +1,22 @@
-import { useSelector } from 'react-redux';
+import React from 'react';
 import CartItem from '../components/CartItem';
-import { selectCurt } from '../store/slises/cartSlise';
+import { useAppSelector } from '../hooks/reduxHooks';
 
 const Cart = () => {
-  const { items } = useSelector(selectCurt);
+  const { items } = useAppSelector((state) => state.cart);
 
   return (
-    <div>
-      {items.map((item: any) => (
-        <CartItem key={item.id} {...item} />
-      ))}
+    <div className="cart-content">
+      {items.length > 0 ? (
+        <>
+          {items.map((item) => (
+            <CartItem key={item.id} {...item} />
+          ))}
+          <button className="cart-content__btn">Заказать</button>
+        </>
+      ) : (
+        <h1 className="cart-content__title">В корзине ничего нет :(</h1>
+      )}
     </div>
   );
 };

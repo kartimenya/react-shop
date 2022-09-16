@@ -1,18 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import Categories from '../components/Categories';
 import RollItem from '../components/RollItem';
 import Skeleton from '../components/RollItem/Skeleton';
 import Sort from '../components/Sort';
-import { setCategoryId } from '../store/slises/filtersSlise';
-import { selectRolls, fetchRolls } from '../store/slises/rollsSlise';
-import { RotState, useAppDispatch } from '../store/store';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { setCategoryId } from '../store/filter/filterSlise';
+import { fetchRolls } from '../store/roll/rollSlise';
 
 const Home = () => {
   const dispatch = useAppDispatch();
-  const categoryId = useSelector((state: RotState) => state.filter.categoryId);
-  const sortyType = useSelector((state: RotState) => state.filter.sort.sortProperty);
-  const { items, status } = useSelector(selectRolls);
+  const categoryId = useAppSelector((state) => state.filter.categoryId);
+  const sortyType = useAppSelector((state) => state.filter.sort.sortProperty);
+  const { rolls, loading } = useAppSelector((state) => state.roll);
 
   const onChangeCategory = (id: number) => {
     dispatch(setCategoryId(id));
@@ -45,12 +44,12 @@ const Home = () => {
       </div>
 
       <div className="contant-items">
-        {status === 'error' ? (
+        {loading === 'error' ? (
           <div>Возникла ошибка в запросе, приносим извинения</div>
-        ) : status === 'loading' ? (
+        ) : loading === 'loading' ? (
           [...new Array(4)].map((_, i) => <Skeleton key={i} />)
         ) : (
-          items.map((item) => <RollItem key={item.id} {...item} />)
+          rolls.map((item) => <RollItem key={item.id} {...item} />)
         )}
       </div>
     </>

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 interface ICategories {
   onChangeCategory: (id: number) => void;
@@ -12,7 +12,10 @@ const Categories: FC<ICategories> = ({ onChangeCategory, value }) => {
     <div className="categories">
       <ul>
         {arr.map((item, id) => (
-          <li onClick={() => onChangeCategory(id)} className={value == id ? 'active' : ''} key={id}>
+          <li
+            onClick={() => onChangeCategory(id)}
+            className={value === id ? 'active' : ''}
+            key={id}>
             {item}
           </li>
         ))}

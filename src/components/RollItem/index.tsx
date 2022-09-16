@@ -1,19 +1,22 @@
-import { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addProduct } from '../../store/slises/cartSlise';
-import { IRoll } from '../../types/IRoll';
+import React, { FC } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { IRoll } from '../../models';
+import { addProduct } from '../../store/cart/cartSlise';
 
-const RollItem: FC<IRoll> = ({ name, price, imgUrl, id }) => {
-  const dispatch = useDispatch();
-  const rollItem = useSelector((state: any) => state.cart.items.find((obj: any) => obj.id === id));
+const RollItem: FC<IRoll> = ({ name, price, imgUrl, id, ingredients, weight }) => {
+  const dispatch = useAppDispatch();
+  const rollItem = useAppSelector((state) => state.cart.items.find((obj) => obj.id === id));
 
   const addedCount = rollItem ? rollItem.count : 0;
 
   const onClickAdd = () => {
     const item = {
-      id: id,
+      id,
       name,
       price,
+      imgUrl,
+      ingredients,
+      weight,
     };
     dispatch(addProduct(item));
   };
@@ -24,14 +27,15 @@ const RollItem: FC<IRoll> = ({ name, price, imgUrl, id }) => {
       </div>
       <div className="card__content">
         <h3 className="card__name">{name}</h3>
-        <p className="card__desc">Филе лосося, сливочный сыр</p>
+        <p className="card__desc">{ingredients}</p>
 
         <div className="card__row">
-          <p>{price}руб.</p>
-          <p>285 гр.</p>
+          <p>{price} руб.</p>
+          <p>{weight} гр.</p>
         </div>
         <button onClick={onClickAdd} className="card__btn">
-          {addedCount > 0 && addedCount} <span>В корзину</span>
+          {addedCount > 0 && <span className="card__count">{addedCount}</span>}{' '}
+          <span>В корзину</span>
         </button>
       </div>
     </div>

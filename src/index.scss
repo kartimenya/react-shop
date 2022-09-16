@@ -131,19 +131,43 @@ a {
 }
 
 .card {
+  width: 254px;
   background: #fff;
   box-shadow: 0 0 15px rgb(81 92 98 / 10%);
   -webkit-box-shadow: 0 0 15px rgb(81 92 98 / 10%);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  &__btn {
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 36px;
+    width: 100%;
+    cursor: pointer;
+    border: solid 1px #bfc5c7;
+    margin-top: 10px;
+    transition: 0.3s;
+  }
+  &__count {
+    background-color: #84bd93;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: #fff;
+  }
 }
 
 .card__content {
-  padding: 0 20px;
+  padding: 15px 20px;
 }
 
 .card__name {
   color: #292f32;
-  margin-top: 15px;
 }
 
 .card__desc {
@@ -161,34 +185,48 @@ a {
   justify-content: space-between;
 }
 
-.card__btn {
-  background: #fff;
-  border-radius: 12px;
-  display: block;
-  height: 36px;
-  width: 100%;
-  cursor: pointer;
-  border: solid 1px #bfc5c7;
-  margin-top: 10px;
-  transition: 0.3s;
-}
-
 .card__btn:hover {
   border-color: #ff4157;
   background: #ff4157;
   color: white;
 }
 
+.cart-content {
+  margin: 0 auto;
+  &__title {
+    margin: 50px auto 0;
+    text-align: center;
+  }
+  &__btn {
+    display: block;
+    margin: 40px auto 10px;
+    background: #7ebd8f;
+    color: #fff;
+    border: none;
+    width: 175px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
 .cart-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
+  max-width: 460px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.cart-item__left {
+  display: flex;
+  align-items: center;
 }
 
 .cart-item__img {
   width: 90px;
   height: auto;
+  margin-right: 20px;
 }
 
 .cart-item__name {
@@ -196,6 +234,11 @@ a {
   margin-bottom: 5px;
 }
 
+.cart-item__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .cart-item__desc {
   font-size: 12px;
   font-weight: 300;
@@ -216,4 +259,13 @@ a {
   border-radius: 50%;
   color: #000;
   cursor: pointer;
+}
+.cart-item__price {
+  min-width: 36px;
+}
+.cart-item__remove svg {
+  cursor: pointer;
+}
+.cart-item__remove > svg > path {
+  fill: #292f32;
 }
