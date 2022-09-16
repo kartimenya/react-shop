@@ -17,23 +17,23 @@ const Home = () => {
     dispatch(setCategoryId(id));
   };
 
-  const fetchItems = async () => {
-    const order = sortyType.includes('-') ? 'asd' : 'desc';
-    const sortBy = sortyType.replace('-', '');
-    const category = categoryId > 0 ? `category=${categoryId}` : '';
-
-    dispatch(
-      fetchRolls({
-        order,
-        sortBy,
-        category,
-      }),
-    );
-  };
-
   useEffect(() => {
+    const fetchItems = async () => {
+      const order = sortyType.includes('-') ? 'asd' : 'desc';
+      const sortBy = sortyType.replace('-', '');
+      const category = categoryId > 0 ? `category=${categoryId}` : '';
+
+      dispatch(
+        fetchRolls({
+          order,
+          sortBy,
+          category,
+        }),
+      );
+    };
+
     fetchItems();
-  }, [categoryId, sortyType]);
+  }, [categoryId, sortyType, dispatch]);
 
   return (
     <>
