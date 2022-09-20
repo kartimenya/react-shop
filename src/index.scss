@@ -18,6 +18,7 @@ a {
 
 .container {
   max-width: 1110px;
+  padding: 0 15px;
   margin: 0 auto;
 }
 
@@ -64,14 +65,17 @@ a {
 
 .contant__top {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-between;
   align-items: center;
 }
 
 .categories ul {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 25px;
+  gap: 10px 25px;
   cursor: pointer;
 }
 
@@ -124,10 +128,20 @@ a {
 
 .contant-items {
   margin-top: 40px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 254px);
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 30px 10px;
+  @media (max-width: 1130px) {
+    grid-template-columns: repeat(3, 254px);
+  }
+  @media (max-width: 830px) {
+    grid-template-columns: repeat(2, 254px);
+    justify-content: space-around;
+  }
+  @media (max-width: 550px) {
+    grid-template-columns: repeat(1, 254px);
+  }
 }
 
 .card {
@@ -210,9 +224,14 @@ a {
   }
 }
 .cart-item {
+  background: #e0f9e6;
+  border-radius: 3px;
+  padding: 5px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   max-width: 460px;
   margin: 0 auto;
   margin-bottom: 20px;
